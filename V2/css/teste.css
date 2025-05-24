@@ -1,0 +1,123 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.headerContent {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.headerContent nav a {
+  color: #dbeafe;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.headerContent nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main */
+.mainContent {
+  flex: 1;
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.mainContent h1,
+.mainContent h2 {
+  margin-bottom: 15px;
+  color: #1e3a8a;
+}
+
+.mainContent p {
+  margin: 8px 0;
+}
+
+input[type="text"],
+button {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #1e40af;
+}
+
+/* Tabela */
+.table, table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table th, table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+table tr:hover {
+  background-color: #f1f5f9;
+  cursor: pointer;
+}
+
+/* Rodapé */
+.footerContent {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: auto;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .mainContent, .headerContent, .footerContent {
+    padding: 10px;
+  }
+
+  table th, table td {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  input[type="text"], button {
+    width: 100%;
+  }
+}

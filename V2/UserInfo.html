@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil do Usuário</title>
+  <link rel="stylesheet" href="css/forms.css">
+
+
+  <script>
+    document.querySelector('Forms').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const usuario = {
+        nome: document.getElementById('nome').value,
+        idade: document.getElementById('idade').value,
+        documento: document.getElementById('documento').value,
+        data_nascimento: document.getElementById('data_nascimento').value,
+        sexo: document.getElementById('sexo').value,
+        estado_civil: document.getElementById('estado_civil').value,
+        profissao: document.getElementById('profissao').value,
+        morador_rua: document.getElementById('morador_rua').checked,
+        status: document.getElementById('status').value,
+        cor_olhos: document.getElementById('cor_olhos').value,
+        cor_cabelo: document.getElementById('cor_cabelo').value,
+        altura: document.getElementById('altura').value,
+        peso: document.getElementById('peso').value,
+        etnia: document.getElementById('etnia').value,
+        codigo_usuario: document.getElementById('codigo_usuario').value,
+        tipo_documento: document.getElementById('tipo_documento').value,
+        comentario: document.getElementById('comment').value
+      };
+  
+      localStorage.setItem('usuario', JSON.stringify(usuario));
+  
+
+      window.location.href = 'UserInfo.html';
+    });
+  </script>
+  
+
+
+</head>
+<body>
+  <header>
+    <h1>Perfil do Usuário</h1>
+  </header>
+  <main>
+    <div id="perfil-container">
+
+    </div>
+  </main>
+  <script>
+
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+
+
+    if (usuario) {
+      const container = document.getElementById('perfil-container');
+      container.innerHTML = `
+        <p><strong>Nome:</strong> ${usuario.nome}</p>
+        <p><strong>Idade:</strong> ${usuario.idade}</p>
+        <p><strong>Documento:</strong> ${usuario.documento}</p>
+        <p><strong>Data de Nascimento:</strong> ${usuario.data_nascimento}</p>
+        <p><strong>Sexo:</strong> ${usuario.sexo}</p>
+        <p><strong>Estado Civil:</strong> ${usuario.estado_civil}</p>
+        <p><strong>Profissão:</strong> ${usuario.profissao}</p>
+        <p><strong>Morador de Rua:</strong> ${usuario.morador_rua ? 'Sim' : 'Não'}</p>
+        <p><strong>Status:</strong> ${usuario.status}</p>
+        <p><strong>Cor dos Olhos:</strong> ${usuario.cor_olhos}</p>
+        <p><strong>Cor do Cabelo:</strong> ${usuario.cor_cabelo}</p>
+        <p><strong>Altura:</strong> ${usuario.altura} m</p>
+        <p><strong>Peso:</strong> ${usuario.peso} kg</p>
+        <p><strong>Etnia:</strong> ${usuario.etnia}</p>
+        <p><strong>Código do Usuário:</strong> ${usuario.codigo_usuario}</p>
+        <p><strong>Tipo de Documento:</strong> ${usuario.tipo_documento}</p>
+        <p><strong>Comentário:</strong> ${usuario.comentario}</p>
+      `;
+    } else {
+
+      document.getElementById('perfil-container').innerHTML = '<p>Nenhum usuário cadastrado.</p>';
+    }
+  </script>
+</body>
+</html>

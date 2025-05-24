@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="css/login.css">
+  <title>Login - SOS Sorocaba</title>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Entrar</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Usuário" required />
+      <input type="password" id="password" placeholder="Senha" required />
+      <button type="submit">Login</button>
+    </form>
+    <div class="links">
+      <a href="#">Esqueceu a senha?</a> |
+      <a href="#">Criar conta</a>
+    </div>
+  </div>
+
+  <script>
+  document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const response = await fetch('http://localhost:3001/authenticate/session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (!response.ok) {
+        throw new Error('Falha na autenticação');
+      }
+
+      const data = await response.json();
+
+      localStorage.setItem('token', data.access_token);
+
+      function parseJwt(token) {
+        try {
+          const base64Payload = token.split('.')[1];
+          const payload = atob(base64Payload);
+          return JSON.parse(payload);
+        } catch(e) {
+          return null;
+        }
+      }
+
+      const payload = parseJwt(data.access_token);
+      const userId = payload ? payload.sub : null;
+
+      if (userId) {
+        localStorage.setItem('userId', userId);
+      }
+
+      window.location.href = `home.html?id=${userId}`;
+    } catch (error) {
+      alert('Usuário ou senha incorretos!');
+      console.error('Erro no login:', error);
+    }
+  });
+</script>
+
+</body>
+</html>

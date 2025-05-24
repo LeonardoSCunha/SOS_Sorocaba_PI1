@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Cadastro de Atividades</title>
+  <link rel="stylesheet" href="css/forms.css" />
+</head>
+<body>
+  <div class="headerContent">
+    <header>
+      <h1>SOS Sorocaba</h1>
+      <h4>Suporte a pessoas em situação de Rua</h4>
+      <nav>
+        <a href="Atividades.html">Atividades</a>
+        <a href="Forms.html">Cadastro</a>
+        <a href="Info.html">Usuários</a>
+      </nav>
+    </header>
+  </div>
+
+  <div class="mainContent">
+    <main>
+      <h1>Cadastro de Atividades</h1>
+
+      <!-- Busca de usuário -->
+      <label for="codigo_usuario">Digite o código do usuário:</label>
+      <input type="text" id="codigo_usuario" name="codigo_usuario" required />
+      <button type="button" onclick="buscarUsuario()">Buscar</button>
+      <br><br>
+
+      <!-- Tabela de dados do usuário -->
+      <table id="usuarioTable" style="display: none; width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Sexo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="nomeUsuario"></td>
+            <td id="idadeUsuario"></td>
+            <td id="sexoUsuario"></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+
+      <!-- Formulário de Atividades -->
+      <form id="atividadesForm" onsubmit="event.preventDefault(); enviarAtividades();">
+        <fieldset>
+          <legend>Atividades Realizadas</legend>
+          <div id="activities-select">
+            <label for="activities-view-button">Selecione uma ou mais atividades:</label><br />
+            <input type="checkbox" id="activities-view-button">
+            
+            <div id="activities-select-button">
+              <div id="activities-selected-value">Selecione as Atividades</div>
+              <div id="activities-chevrons">
+                <i class="chevron-down"></i>
+                <i class="chevron-up"></i>
+              </div>
+            </div>
+            
+            <!-- Lista de opções de atividades -->
+            <div id="activities-options">
+              <div class="activity-option">
+                <input type="checkbox" id="oficina" name="atividade" value="Oficina Profissionalizante">
+                <label for="oficina">Oficina Profissionalizante</label>
+              </div>
+              
+              <div class="activity-option">
+                <input type="checkbox" id="aconselhamento" name="atividade" value="Aconselhamento Psicossocial">
+                <label for="aconselhamento">Aconselhamento Psicossocial</label>
+              </div>
+              
+              <div class="activity-option">
+                <input type="checkbox" id="saude" name="atividade" value="Atendimento de Saúde">
+                <label for="saude">Atendimento de Saúde</label>
+              </div>
+              
+              <div class="activity-option">
+                <input type="checkbox" id="alimentacao" name="atividade" value="Distribuição de Alimentação">
+                <label for="alimentacao">Distribuição de Alimentação</label>
+              </div>
+              
+              <div class="activity-option">
+                <input type="checkbox" id="higiene" name="atividade" value="Kit Higiene">
+                <label for="higiene">Kit Higiene</label>
+              </div>
+              
+              <div class="activity-option">
+                <input type="checkbox" id="nenhuma-atividade" name="atividade" value="Nenhuma atividade">
+                <label for="nenhuma-atividade">Nenhuma atividade</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        
+        <!-- Data da Atividade -->
+        <div style="margin-top: 1rem;">
+          <label for="data_atividade">Data da atividade:</label>
+          <input type="date" id="data_atividade" name="data_atividade" required />
+        </div>
+        
+        <br />
+        <button type="submit">Registrar Atividades</button>
+      </form>
+    </main>
+  </div>
+
+  <div class="footerContent">
+    <footer>
+      <h3>SOS Sorocaba</h3>
+      <h4>Projeto Integrador</h4>
+    </footer>
+  </div>
+
+  <script src="javascript/atividades.js"></script>
+</body>
+</html>

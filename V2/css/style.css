@@ -1,0 +1,177 @@
+
+/*Conigurações de HeadLines*/
+
+h1{
+    margin-top: 10%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    color: blue;
+    text-align: left
+        ;}
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    text-align: left
+        ;}
+h3{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5;
+    text-align: left
+        ;}
+h4{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+    text-align: left
+        ;}
+h5{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1m;
+    text-align: left
+        ;}
+h6{
+        font-family: Arial, Helvetica, sans-serif;
+    font-size: 1mm;
+    text-align: left
+        ;}
+h1,h2,h3,h4,h5.h6{padding-top: 0,50%;padding-bottom:  0,50%;}
+
+/*Configuração de paragrafo*/
+p{
+    padding-top: 1%; padding-bottom: 1%
+    ;}
+/*Configuração de Paragrafo mobile*/
+    @media (min-width:360px) and (max-width: 1024px) {
+        p{padding-top: 3%; padding-bottom: 3%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px}
+
+    }
+ /*Configurações do Site*/
+
+:root{
+    --black: black;
+    --white: white;
+    --blue: blue;
+    --gray: gray
+}
+
+*{margin: 0; border: 0; padding: 0}
+
+/*Configurações de Imagens*/
+
+img{
+    width: 100%;
+    display: block; margin: 0 auto;
+    padding-top: 2% 
+    ;}
+
+
+/*Configurações do Corpo*/
+
+html{
+    font-family: Arial, Helvetica, sans-serif; font-size: 1em; scroll-behavior:auto;}
+    
+header{
+    background-color: var(--black);color: var(--white); padding: 1%; position: fixed; width: 100%;
+
+    ;}
+    
+nav{display: block; text-align: end; padding: 5px; font-size: 1.1em; word-spacing: 10px; width: 95%;}
+
+a{ 
+    text-decoration: none;color: var(--white); font-weight: bold;
+}
+
+a:hover{
+    color: var(--gray);
+    text-size-adjust: 3px;
+    transition: 0.3s ease;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #3056fc, #959bff);
+    color: #333;
+  }
+
+main{
+    background-color: var(--white); 
+    padding: 1%; margin: auto; 
+    width: 90%;
+    margin-top: 0.5%;
+    border-radius: 10px;
+                /*horizontal Vertical Opacidade espalhamento cor*/
+    box-shadow: 1px 1px 5px 0px black
+    ;}
+
+aside{
+    background-color: var(--white); 
+    padding: 1%; margin: auto; 
+    width: 90%;
+    margin-top: 0.5%;
+    border-radius: 10px;
+                /*horizontal Vertical Opacidade espalhamento cor*/
+    box-shadow: 1px 1px 5px 0px black
+    ;}
+
+
+footer{
+    background-color: var(--black); color: var(--white); padding: 1%; text-align: center; font-weight: bold
+    ;}
+
+/*DIVS*/
+
+.separador{                 /*Espaçamento entre os corpos*/
+    margin-top: 8%;
+}
+.grid-separador{
+    margin-top: 0.5%;
+}
+
+/*Configuração de Paragrafo mobile*/
+
+@media (min-width:320px) and (max-width: 1024px) {
+    .separador{margin-top: 16%;}
+    .grid-separador{margin-top: 0.2%;}
+
+}
+/*Configurações de Grids*/
+
+#grid-content{
+    background-color: var(--gray);}
+
+#grid-Button{
+    
+    background-color: var(--black);
+}
+
+.grid{display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    max-width: 1024px;
+    margin: auto;
+    gap: 2px;
+}
+
+.grid div{
+    background-color: var(--white); text-align: center; padding: 2px;
+}
+
+/*Configuração de Botão*/
+
+button{
+    
+    background-color: var(--black);
+    color: var(--white);
+    padding: 8px 20px 8px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1.3em;
+    display: block;
+    margin:auto;
+    transition: 0.2s ease;
+}
+
+button:hover{
+    color: var(--gray);
+}
