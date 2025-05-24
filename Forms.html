@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SOS Sorocaba</title>
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="shortcut icon" href="C:\Users\lcunha\.vscode\Projects\SOS_Sorocaba\ProjetoIntegrador_Content\LogoSOS.png" type="image/x-icon" />
+  
+</head>
+<body>
+  <div class="headerContent">
+    <header>
+      <h1>SOS Sorocaba</h1>
+      <h4>Suporte a pessoas em situação de Rua</h4>
+      <nav>
+        <a href="Atividades.html">Atividades</a>
+        <a href="Forms.html">cadastro</a>
+        <a href="Info.html">Usuarios</a>
+      </nav>
+    </header>
+  </div>
+
+  <br />
+
+  <div class="mainContent">
+    <main>
+      <h1>Cadastro de novos Usuários</h1>
+      <br />
+      <section id="grid-content">
+        <form id="cadastroForm">
+
+          <div class="form-grid">
+            <!-- Coluna 1 -->
+            <div class="form-col">
+              <label for="nome">Nome:</label>
+              <input type="text" id="nome" name="nome" placeholder="Coloque o nome aqui" required>
+
+              <label for="idade">Idade:</label>
+              <input type="number" id="idade" name="idade" min="0" required>
+
+              <label for="documento">Documento:</label>
+              <input type="text" id="documento" name="documento" maxlength="20" required>
+
+              <label for="data_nascimento">Data de Nascimento:</label>
+              <input type="date" id="data_nascimento" name="data_nascimento" required>
+
+              <label for="sexo">Sexo:</label>
+              <select id="sexo" name="sexo" required>
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outro">Outro</option>
+              </select>
+
+              <label for="estado_civil">Estado Civil:</label>
+              <select id="estado_civil" name="estado_civil" required>
+                <option value="Solteiro">Solteiro</option>
+                <option value="Casado">Casado</option>
+                <option value="Divorciado">Divorciado</option>
+                <option value="Viúvo">Viúvo</option>
+                <option value="Outro">Outro</option>
+              </select>
+
+              <label for="profissao">Profissão:</label>
+              <input type="text" id="profissao" name="profissao">
+
+              <label for="morador_rua">Morador de Rua:</label>
+              <input type="checkbox" id="morador_rua" name="morador_rua" value="1">
+            </div>
+
+            <!-- Coluna 2 -->
+            <div class="form-col">
+              <label for="status">Status:</label>
+              <select id="status" name="status" required>
+                <option value="Ativo">Ativo</option>
+                <option value="Bloqueado">Bloqueado</option>
+              </select>
+
+              <label for="cor_olhos">Cor dos Olhos:</label>
+              <input type="text" id="cor_olhos" name="cor_olhos">
+
+              <label for="cor_cabelo">Cor do Cabelo:</label>
+              <input type="text" id="cor_cabelo" name="cor_cabelo">
+
+              <label for="altura">Altura (m):</label>
+              <input type="number" step="0.01" id="altura" name="altura">
+
+              <label for="peso">Peso (kg):</label>
+              <input type="number" step="0.01" id="peso" name="peso">
+
+              <label for="etnia">Etnia:</label>
+              <input type="text" id="etnia" name="etnia">
+
+              <label for="codigo_usuario">Código do Usuário:</label>
+              <input type="text" id="codigo_usuario" name="codigo_usuario">
+
+              <label for="tipo_documento">Tipo de Documento:</label>
+              <select id="tipo_documento" name="tipo_documento" required>
+                <option value="RG">RG</option>
+                <option value="CPF">CPF</option>
+              </select>
+            </div>
+          </div>
+
+          <br />
+          <label for="comentario">Comentário:</label>
+          <textarea name="comentario" id="comment" placeholder="Escreva uma mensagem" cols="30" rows="5"></textarea>
+
+          <br />
+          <button type="submit">Cadastrar</button>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <div class="grid-separador"></div>
+
+  <div class="footerContent">
+    <footer>
+      <h3>SOS Sorocaba</h3>
+      <h4>Projeto Integrador</h4>
+    </footer>
+  </div>
+<script>
+  document.getElementById("cadastroForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Token de autenticação não encontrado. Faça login novamente.");
+      return;
+    }
+
+    const form = e.target;
+
+    const dados = {
+      nome: form.nome.value,
+      idade: parseInt(form.idade.value),
+      documento: form.documento.value,
+      data_nascimento: form.data_nascimento.value,
+      sexo: form.sexo.value,
+      estado_civil: form.estado_civil.value,
+      profissao: form.profissao.value,
+      morador_rua: form.morador_rua.checked,
+      status: form.status.value,
+      cor_olhos: form.cor_olhos.value,
+      cor_cabelo: form.cor_cabelo.value,
+      altura: form.altura.value,
+      peso: form.peso.value,
+      etnia: form.etnia.value,
+      codigo_usuario: form.codigo_usuario.value,
+      tipo_documento: form.tipo_documento.value,
+      comentario: form.comentario.value
+    };
+
+    console.log("Token enviado:", token);
+    console.log("Dados enviados:", dados);
+
+    try {
+      const response = await fetch("http://localhost:3001/patient/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + token
+        },
+        body: JSON.stringify(dados)
+      });
+
+      const result = await response.text();
+
+      if (response.ok) {
+        alert("Cadastro enviado com sucesso!");
+        form.reset();
+      } else {
+        alert("Erro ao enviar: " + result);
+      }
+    } catch (error) {
+      alert("Erro de conexão com o servidor.");
+      console.error(error);
+    }
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Usuários - SOS Sorocaba</title>
+  <link rel="stylesheet" href="css/forms.css" />
+  <link rel="shortcut icon" href="LogoSOS.png" type="image/x-icon" />
+</head>
+
+<body>
+  <div class="headerContent">
+    <header>
+      <h1>SOS Sorocaba</h1>
+      <h4>Suporte a pessoas em situação de rua</h4>
+      <nav>
+        <a href="Atividades.html">Atividades</a>
+        <a href="Forms.html">Cadastro</a>
+        <a href="Info.html">Usuários</a>
+      </nav>
+    </header>
+  </div>
+
+  <br>
+
+  <div class="mainContent">
+    
+    <main>
+      <h2>Lista de Usuários</h2>
+      <input type="text" id="pesquisa" placeholder="Buscar por nome..." />
+      
+      <button onclick="buscarUsuarios()">Buscar</button>
+
+      <br><br>
+      <div class="table">
+      <table border="1" id="tabelaUsuarios">
+        <thead>
+                            
+                     <p> <span id="tokenDisplay"></span></p>
+                          <tr>
+                            <th>Nome</th>
+                            <th>Idade</th>
+                            <th>Documento</th>
+                            <th>Sexo</th>
+                            <th>Data de Nascimento</th>
+                            <th>Profissão</th>
+                          </tr>
+                        </thead>
+        <tbody>
+          <!-- Usuários serão inseridos aqui -->
+        </tbody>
+      </table>
+      </div>
+    </main>
+  </div>
+
+  <div class="grid-separador"></div>
+
+  <div class="footerContent">
+    <footer>
+      <h3>SOS Sorocaba</h3>
+      <h4>Projeto Integrador</h4>
+    </footer>
+  </div>
+</body>
+
+<script src="javascript/info.js"></script>
+</html>

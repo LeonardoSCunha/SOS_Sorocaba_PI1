@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>Cadastro de Benefícios e Dependências</title>
+  <link rel="stylesheet" href="css/forms.css" />
+</head>
+<body>
+  <div class="headerContent">
+    <header>
+      <h1>SOS Sorocaba</h1>
+      <h4>Suporte a pessoas em situação de Rua</h4>
+      <nav>
+        <a href="Atividades.html">Atividades</a>
+        <a href="Forms.html">Cadastro</a>
+        <a href="Info.html">Usuários</a>
+      </nav>
+    </header>
+  </div>
+
+  <div class="mainContent">
+    <!-- Primeiro main - Benefícios -->
+    <main>
+      <h1>Cadastro de Benefícios e Dependências</h1>
+
+      <!-- Busca de usuário -->
+      <label for="codigo_usuario">Digite o código do usuário:</label>
+      <input type="text" id="codigo_usuario" name="codigo_usuario" required />
+      <button type="button" onclick="buscarUsuario()">Buscar</button>
+      <br><br>
+
+      <!-- Tabela de dados do usuário -->
+      <table id="usuarioTable" style="display: none; width: 100%; border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Sexo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="nomeUsuario"></td>
+            <td id="idadeUsuario"></td>
+            <td id="sexoUsuario"></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+
+      <!-- Formulário de cadastro -->
+      <form id="beneficioDependenciaForm" onsubmit="event.preventDefault(); enviarCadastro();">
+        <!-- Benefícios -->
+        <fieldset>
+          <legend>Benefícios</legend>
+          <div id="category-select">
+            <label for="options-view-button">Selecione um ou mais benefícios:</label><br />
+            <input type="checkbox" id="options-view-button">
+            
+            <div id="select-button">
+              <div id="selected-value">Selecione o Beneficio</div>
+              <div id="chevrons">
+                <i class="chevron-down"></i>
+                <i class="chevron-up"></i>
+              </div>
+            </div>
+            
+            <!-- Lista de opções -->
+            <div id="options">
+              <div class="option">
+                <input type="checkbox" id="aposentado" name="beneficio" value="Aposentado/Auxílio Doença">
+                <label for="aposentado">Aposentado/Auxílio Doença</label>
+              </div>
+              
+              <div class="option">
+                <input type="checkbox" id="bcp" name="beneficio" value="BCP/LOAS">
+                <label for="bcp">BCP/LOAS</label>
+              </div>
+              
+              <div class="option">
+                <input type="checkbox" id="bolsa" name="beneficio" value="Bolsa Família/Auxílio Brasil">
+                <label for="bolsa">Bolsa Família/Auxílio Brasil</label>
+              </div>
+              
+              <div class="option">
+                <input type="checkbox" id="nenhum" name="beneficio" value="Não possui">
+                <label for="nenhum">Não possui</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+        <br />
+        <form action="Home.html" method="POST"></form>
+        <button type="submit">Enviar</button>
+      </form>
+    </main>
+    
+    <!-- Segundo main - Dependências -->
+    <main>
+      <h1>Cadastro de Benefícios e Dependências</h1>
+      
+      <!-- Formulário de Dependências -->
+      <form id="beneficioDependenciaForm" onsubmit="event.preventDefault(); enviarCadastro();">
+        <!-- Dependências -->
+        <div id="dependencies-select">
+          <label for="dependencies-view-button">Selecione as dependências:</label><br />
+          <input type="checkbox" id="dependencies-view-button">
+          
+          <div id="dependencies-select-button">
+            <div id="dependencies-selected-value">Selecione as Dependências</div>
+            <div id="dependencies-chevrons">
+              <i class="chevron-down"></i>
+              <i class="chevron-up"></i>
+            </div>
+          </div>
+          
+          <!-- Lista de opções -->
+          <div id="dependencies-options">
+            <div class="dependency-option">
+              <input type="checkbox" id="alcool" name="dependencia" value="Álcool">
+              <label for="alcool">Álcool</label>
+            </div>
+            
+            <div class="dependency-option">
+              <input type="checkbox" id="alcool-drogas" name="dependencia" value="Álcool e Drogas">
+              <label for="alcool-drogas">Álcool e Drogas</label>
+            </div>
+            
+            <div class="dependency-option">
+              <input type="checkbox" id="drogas" name="dependencia" value="Drogas">
+              <label for="drogas">Drogas</label>
+            </div>
+            
+            <div class="dependency-option">
+              <input type="checkbox" id="nenhuma-dependencia" name="dependencia" value="Não possui">
+              <label for="nenhuma-dependencia">Não possui</label>
+            </div>
+          </div>
+        </div>
+        <br />
+        <button type="submit">Enviar</button>
+      </form>
+    </main>
+  </div>
+
+  <div class="footerContent">
+    <footer>
+      <h3>SOS Sorocaba</h3>
+      <h4>Projeto Integrador</h4>
+    </footer>
+  </div>
+
+  <script src="javascript/bendep.js"></script>
+</body>
+</html>
